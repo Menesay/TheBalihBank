@@ -107,7 +107,7 @@ func isItInDataBase(name_surname, passwd string) bool {
 	}
 	/////////////////////////////////////////////
 
-	//fmt.Println(dataArray)
+	
 
 	prefix := ""
 	suffix := ""
@@ -115,7 +115,6 @@ func isItInDataBase(name_surname, passwd string) bool {
 
 		for y, letter := range val {
 
-			//menes:123
 			if string(letter) == ":" {
 				prefix = string(val[:y])   //menes
 				suffix = string(val[y+1:]) //123
@@ -364,7 +363,7 @@ func deposit(balance, val float64) (float64, string) {
 func withdraw(balance, val float64) (float64, string) {
 
 	if val > balance {
-		return 0, "valbigger"
+		return 0, "valgreater"
 	}
 	if val < 0 {
 		return 0, "vallesser"
@@ -432,7 +431,7 @@ func loginInterface(name_surname, passwd string) {
 			tmpbalance, err := withdraw(balance, withVal)
 			if err == "nil" {
 				balance = tmpbalance
-			} else if err == "valbigger" {
+			} else if err == "valgreater" {
 				println("Value must less than balance.")
 			} else if err == "vallesser" {
 				println("Value must not less than 0.")
